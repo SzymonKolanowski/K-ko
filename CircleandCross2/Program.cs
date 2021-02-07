@@ -10,26 +10,29 @@ namespace CircleandCross2
 
 			//string[,] array = new string [3, 3];
 
-			string[,] array = new string[3,3] { {"x","o","o" }, {"x","x","o"}, {"x","o","o" } };
-			Console.WriteLine("dzięki za pomoc");
+			string[,] array = new string[3,3] { {"[ ]","[ ]","[ ]" }, {"[ ]","[ ]","[ ]"}, {"[ ]","[ ]","[ ]" } };
+			
 
 
 
 
 
-			for (int i = 0; i < 3; i++)
+
+
+			for (int i = 0; i <3; i++)
 			{
-
-				Console.WriteLine(array);
+				for (int j = 0; j < 3; j++)
+				{
+					string arr = array[i,j];
+					Console.Write(arr)
+						;
+				}
+				Console.WriteLine();
+				
 
 			}
 
-			//for (int i = 0; i < array.Length; i++)
-			//{
-			//	string arr = array[i];
-			//}
-
-
+			Console.WriteLine("podaj pozycje 'o' ");
 		}
 	}
 }
