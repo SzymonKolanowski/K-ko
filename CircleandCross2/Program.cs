@@ -11,6 +11,7 @@ namespace CircleandCross2
 			//string[,] array = new string [3, 3];
 
 			string[,] array = new string[3,3] { {"x","o","o" }, {"x","x","o"}, {"x","o","o" } };
+			Console.WriteLine("dzięki za pomoc");
 
 
 
