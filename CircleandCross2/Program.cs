@@ -19,20 +19,42 @@ namespace CircleandCross2
 
 
 
-			for (int i = 0; i <3; i++)
+			for (int i = 0; i <array.GetLength(0); i++)
 			{
-				for (int j = 0; j < 3; j++)
+				for (int j = 0; j < array.GetLength(1); j++)
 				{
 					string arr = array[i,j];
-					Console.Write(arr)
-						;
+					Console.Write(arr);
 				}
 				Console.WriteLine();
 				
 
 			}
 
-			Console.WriteLine("podaj pozycje 'o' ");
+			Console.WriteLine("podaj pozycje 'o' w lini 'i'");
+			string tekst = Console.ReadLine();
+			int pozycja1i = int.Parse(tekst);
+			Console.WriteLine(" podaj pozycję 'o' w lini 'j' ");
+			string tekst2 = Console.ReadLine();
+			int pozycja1j = int.Parse(tekst2);
+
+			for (int i = 0; i < array.GetLength(0); i++)
+			{
+				for (int j = 0; j < array.GetLength(1); j++)
+				{
+					if (j == pozycja1j)
+					{
+						Console.WriteLine("o");
+					}
+				}
+
+				if (i == pozycja1i)
+				{
+					Console.WriteLine("o");
+				}
+				
+			}
+
 		}
 	}
 }
