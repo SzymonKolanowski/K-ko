@@ -42,16 +42,37 @@ namespace CircleandCross2
 			{
 				for (int j = 0; j < array.GetLength(1); j++)
 				{
-					if (j == pozycja1j)
+					
+					//if (i == pozycja1i)
+					//{
+					//	Console.Write("o");
+					//}
+					 if (j == pozycja1j)
 					{
-						Console.WriteLine("o");
+						Console.Write("o");
+					}
+					else
+					{
+						string arr1 = array[pozycja1i, pozycja1j];
+						Console.Write(arr1);
 					}
 				}
 
-				if (i == pozycja1i)
-				{
-					Console.WriteLine("o");
-				}
+				//if (i == pozycja1i)
+				//{
+				//	Console.Write("o");
+				//}
+
+				//else
+				//{
+				//	string arr1 = array[pozycja1j];
+				//	Console.Write(arr1);
+				//}
+
+
+
+				Console.WriteLine();
+			
 				
 			}
 
