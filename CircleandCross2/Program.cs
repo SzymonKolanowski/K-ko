@@ -4,11 +4,15 @@ namespace CircleandCross2
 {
 	class Program
 	{
-		static string[] Savearr(string[] array)
+		static string[,] Savearr(string[,] array)
 		{
 			for (int i = 1; i < array.Length; i++)
 			{
-				array[i] = array[i] + array[i - 1];
+				for (int j = 1; j < array.Length; j++)
+				{
+					array[i,j] = array[i,j] + array[i-1,j-1];// - wywala błąd " index was outside the bounds of the array" , próbowałem różnych opcji nie mam już pomysłow jak tą funkcję zapisać
+				}
+				
 			}
 			return array;
 		}
@@ -17,7 +21,7 @@ namespace CircleandCross2
 			Console.WriteLine("CircleandCross");
 			
 			string[,] array = new string[3,3] { {"[ ]","[ ]","[ ]" }, {"[ ]","[ ]","[ ]"}, {"[ ]","[ ]","[ ]" } };
-			
+			string[,] Cumulativearr = Savearr(array);
 			for (int i = 0; i <array.GetLength(0); i++)
 			{
 				for (int j = 0; j < array.GetLength(1); j++)
