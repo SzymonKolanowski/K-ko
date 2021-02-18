@@ -49,61 +49,26 @@ namespace CircleandCross2
 						Console.WriteLine();
 					}
 
-					if (array[0, 0] == "[o]" && array[0, 1] == "[o]" && array[0, 2] == "[o]")
+					if (array[0, 0] == "[o]" && array[0, 1] == "[o]" && array[0, 2] == "[o]"
+						|| array[1, 0] == "[o]" && array[1, 1] == "[o]" && array[1, 2] == "[o]"
+						|| array[2, 0] == "[o]" && array[2, 1] == "[o]" && array[2, 2] == "[o]"
+						|| array[0, 0] == "[o]" && array[1, 1] == "[o]" && array[2, 2] == "[o]"
+						|| array[0, 0] == "[o]" && array[1, 0] == "[o]" && array[2, 0] == "[o]"
+						|| array[0, 1] == "[o]" && array[1, 1] == "[o]" && array[2, 1] == "[o]"
+						|| array[0, 2] == "[o]" && array[1, 2] == "[o]" && array[2, 2] == "[o]"
+						|| array[0, 2] == "[o]" && array[1, 1] == "[o]" && array[2, 0] == "[o]")
 					{
-						Console.WriteLine("wygrał 'o' , konic gry");
+						Console.WriteLine("wygrał 'o' , koniec gry");
 						break;
 					}
 
-					else if (array[1, 0] == "[o]" && array[1, 1] == "[o]" && array[1, 2] == "[o]")
+					
+
+					 if (a == 5)
 					{
-						Console.WriteLine("wygrał 'o' , konic gry");
+						Console.WriteLine(" koniec gry - remis");
 						break;
 					}
-
-					else if (array[2, 0] == "[o]" && array[2, 1] == "[o]" && array[2, 2] == "[o]")
-					{
-						Console.WriteLine("wygrał 'o' , konic gry");
-						break;
-					}
-
-					else if (array[0, 0] == "[o]" && array[1, 1] == "[o]" && array[2, 2] == "[o]")
-					{
-						Console.WriteLine("wygrał 'o' , konic gry");
-						break;
-					}
-
-					else if (array[0, 0] == "[o]" && array[1, 0] == "[o]" && array[2, 0] == "[o]")
-					{
-						Console.WriteLine("wygrał 'x' , konic gry");
-						break;
-					}
-
-					else if (array[0, 0] == "[o]" && array[1, 0] == "[o]" && array[2, 0] == "[o]")
-					{
-						Console.WriteLine("wygrał 'o' , konic gry");
-						break;
-					}
-
-					else if (array[0, 1] == "[o]" && array[1, 1] == "[o]" && array[2, 1] == "[o]")
-					{
-						Console.WriteLine("wygrał 'o' , konic gry");
-						break;
-					}
-
-					else if (array[0, 2] == "[o]" && array[1, 2] == "[o]" && array[2, 2] == "[o]")
-					{
-						Console.WriteLine("wygrał 'o' , konic gry");
-						break;
-					}
-
-					else if (array[0, 2] == "[o]" && array[1, 1] == "[o]" && array[2, 0] == "[o]")
-					{
-						Console.WriteLine("wygrał 'o' , konic gry");
-						break;
-					}
-
-
 
 					Console.WriteLine("podaj pozycję znaku 'x' w lini i");
 					string tekst3 = Console.ReadLine();
@@ -130,59 +95,20 @@ namespace CircleandCross2
 					//	break;
 					//}
 
-					if (array[0, 0] == "[x]" && array[0, 1] == "[x]" && array[0, 2] == "[x]")
+					if (array[0, 0] == "[x]" && array[0, 1] == "[x]" && array[0, 2] == "[x]" 
+						|| array[1, 0] == "[x]" && array[1, 1] == "[x]" && array[1, 2] == "[x]"
+						|| array[2, 0] == "[x]" && array[2, 1] == "[x]" && array[2, 2] == "[x]"
+						|| array[0, 0] == "[x]" && array[1, 1] == "[x]" && array[2, 2] == "[x]"
+						|| array[0, 0] == "[x]" && array[1, 0] == "[x]" && array[2, 0] == "[x]"
+						|| array[0, 1] == "[x]" && array[1, 1] == "[x]" && array[2, 1] == "[x]"
+						|| array[0, 2] == "[x]" && array[1, 2] == "[x]" && array[2, 2] == "[x]"
+						|| array[0, 2] == "[x]" && array[1, 1] == "[x]" && array[2, 0] == "[x]")
 					{
-						Console.WriteLine("wygrał 'x' , konic gry");
+						Console.WriteLine("wygrał 'x' , koniec gry");
 						break;
 					}
-					else if (array[1, 0] == "[x]" && array[1, 1] == "[x]" && array[1, 2] == "[x]")
-					{
-						Console.WriteLine("wygrał 'x' , konic gry");
-						break;
-					}
-
-					else if (array[2, 0] == "[x]" && array[2, 1] == "[x]" && array[2, 2] == "[x]")
-					{
-						Console.WriteLine("wygrał 'x' , konic gry");
-						break;
-					}
-
-					else if (array[0, 0] == "[x]" && array[1, 1] == "[x]" && array[2, 2] == "[x]")
-					{
-						Console.WriteLine("wygrał 'x' , konic gry");
-						break;
-					}
-
-					else if (array[0, 0] == "[x]" && array[1, 0] == "[x]" && array[2, 0] == "[x]")
-					{
-						Console.WriteLine("wygrał 'x' , konic gry");
-						break;
-					}
-
-					else if (array[0, 0] == "[x]" && array[1, 0] == "[x]" && array[2, 0] == "[x]")
-					{
-						Console.WriteLine("wygrał 'x' , konic gry");
-						break;
-					}
-
-					else if (array[0, 1] == "[x]" && array[1, 1] == "[x]" && array[2, 1] == "[x]")
-					{
-						Console.WriteLine("wygrał 'x' , konic gry");
-						break;
-					}
-
-					else if (array[0, 2] == "[x]" && array[1, 2] == "[x]" && array[2, 2] == "[x]")
-					{
-						Console.WriteLine("wygrał 'x' , konic gry");
-						break;
-					}
-
-					else if (array[0, 2] == "[x]" && array[1, 1] == "[x]" && array[2, 0] == "[x]")
-					{
-						Console.WriteLine("wygrał 'x' , konic gry");
-						break;
-					}
-
+					
+					
 					//if (array[0, 0] == array[pozycja1i, pozycja1j] && array[0, 0] == array[pozycja2i, pozycja2j])
 					//{
 					//	Console.WriteLine("pozycja jest już zajeta");
@@ -210,12 +136,10 @@ namespace CircleandCross2
 					//	Console.WriteLine("już zająłeś tą współrzędną");
 					//	break;
 					//}
-
+					
 
 				}
-
 				
-
 			}
 
 			catch (Exception exception)
