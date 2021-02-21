@@ -62,9 +62,7 @@ namespace CircleandCross2
 						break;
 					}
 
-					
-
-					 if (a == 5)
+					if (a == 5)
 					{
 						Console.WriteLine(" koniec gry - remis");
 						break;
@@ -95,7 +93,7 @@ namespace CircleandCross2
 					//	break;
 					//}
 
-					if (array[0, 0] == "[x]" && array[0, 1] == "[x]" && array[0, 2] == "[x]" 
+					if (array[0, 0] == "[x]" && array[0, 1] == "[x]" && array[0, 2] == "[x]"
 						|| array[1, 0] == "[x]" && array[1, 1] == "[x]" && array[1, 2] == "[x]"
 						|| array[2, 0] == "[x]" && array[2, 1] == "[x]" && array[2, 2] == "[x]"
 						|| array[0, 0] == "[x]" && array[1, 1] == "[x]" && array[2, 2] == "[x]"
@@ -107,24 +105,27 @@ namespace CircleandCross2
 						Console.WriteLine("wygrał 'x' , koniec gry");
 						break;
 					}
-					
-					
+					//if (array[0, 0] == "[x]" && array[0, 0] == "[o]")
+					//{
+					//	Console.WriteLine("zająłeś już tą pozycję");
+					//}
+
 					//if (array[0, 0] == array[pozycja1i, pozycja1j] && array[0, 0] == array[pozycja2i, pozycja2j])
 					//{
 					//	Console.WriteLine("pozycja jest już zajeta");
 					//	break;
 					//}
 
-					//if (array[pozycja1i,pozycja1j] == array[pozycja2i,pozycja2j])
-					//{
-					//	Console.WriteLine("pozycja była już zajęta");
-					//	break;
-					//}
-					if (pozycja2i == pozycja1i & pozycja2j == pozycja1j | pozycja1i == pozycja2i & pozycja1j == pozycja2j)
+					if (array[pozycja1i, pozycja1j] == array[pozycja2i, pozycja2j])
 					{
-						Console.WriteLine("podana współrzędna jest już zajęta ");
+						Console.WriteLine("pozycja była już zajęta");
 						break;
 					}
+					//if (pozycja2i == pozycja1i & pozycja2j == pozycja1j | pozycja1i == pozycja2i & pozycja1j == pozycja2j)
+					//{
+					//	Console.WriteLine("podana współrzędna jest już zajęta ");
+					//	break;
+					//}
 					//if (pozycja1i == pozycja2i && pozycja1j == pozycja2j)
 					//{
 					//	Console.WriteLine("podana współrzędna jest już zajeta przez 'x'");
@@ -136,9 +137,13 @@ namespace CircleandCross2
 					//	Console.WriteLine("już zająłeś tą współrzędną");
 					//	break;
 					//}
-					
 
 				}
+
+				//if (array[0, 0] == "[o]" && array[0, 0] == "[x]")
+				//{
+				//	Console.WriteLine("zdublowana pozycja");
+				//}
 				
 			}
 
@@ -149,7 +154,6 @@ namespace CircleandCross2
 			}
 
 			// - spisać wszystkie warunki wygranej , sprawdzić możliwe błędy, ulepszyć kod.
-
 
 		}
 	}
