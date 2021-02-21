@@ -11,7 +11,7 @@ namespace CircleandCross2
 			{
 
 
-				Console.WriteLine("CircleandCross");
+				Console.WriteLine("Tic Tac Toe");
 
 				string[,] array = new string[3, 3] { { "[ ]", "[ ]", "[ ]" }, { "[ ]", "[ ]", "[ ]" }, { "[ ]", "[ ]", "[ ]" } };
 
