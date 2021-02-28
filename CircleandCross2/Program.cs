@@ -47,9 +47,6 @@ namespace CircleandCross2
 					{
 						return true;
 					}
-
-
-
 				}
 				
 			}
@@ -59,46 +56,47 @@ namespace CircleandCross2
 		static void Main(string[] args)
 		{
 
-
-
-
 			string [,] array = new string[3, 3] { { "[ ]", "[ ]", "[ ]" }, { "[ ]", "[ ]", "[ ]" }, { "[ ]", "[ ]", "[ ]" } };
 			ShowGameBoard(array);
-
-			
-
-
-
 
 			for (int GameRound = 1; GameRound <= 5; GameRound++)
 			{
 
-				
-
 				Console.WriteLine("podaj pozycje 'o' w lini 'i'");
 				string text = Console.ReadLine();
-				int position1i = int.Parse(text);
-				//bool isNumber = int.TryParse(text, out int number);
+				int position1i ;
 
-				//if (!isNumber)
-				//{
-				//	break;
-				//}
-				//bool position1i = int.TryParse(text, out int number);
-				//int position1i = int.Parse(text);
+				bool isNumber = int.TryParse(text, out  position1i);
+
+				if (isNumber == false )
+				{
+					Console.WriteLine("podałeś literę zamiast liczby");
+					
+
+				}
+
+				if (position1i > array.Rank)
+				{
+					Console.WriteLine("podałeś za dużą liczbę");
+				}
+				
 				Console.WriteLine(" podaj pozycję 'o' w lini 'j' ");
 				string text2 = Console.ReadLine();
-				int position1j = int.Parse(text2);
+				int position1j ;
 
-				//if (position1i > 2)
-				//{
-				//	Console.WriteLine("zbyt wysoka współrzędna");
-				//}
+				bool isNumber2 = int.TryParse(text2, out position1j);
 
-				//if (position1j > 2)
-				//{
-				//	Console.WriteLine("zbyt wysoka współrzędna");
-				//}
+				if (isNumber2 == false)
+				{
+					Console.WriteLine("podałeś literę zamiast liczby");
+					
+				
+				}
+
+				if (position1j > array.Rank)
+				{
+					Console.WriteLine("podałeś za dużą liczbę");
+				}
 
 				if (array[position1i, position1j] == "[ ]")
 				{
@@ -108,9 +106,7 @@ namespace CircleandCross2
 				{
 					Console.WriteLine("pozycja już zajęta");
 				}
-
 				
-
 				ShowGameBoard(array);
 
 				GameWonCondition(array);
@@ -121,9 +117,6 @@ namespace CircleandCross2
 					break;
 				}
 
-
-
-
 				if (GameRound == 5)
 				{
 					Console.WriteLine(" koniec gry - remis");
@@ -132,20 +125,37 @@ namespace CircleandCross2
 
 				Console.WriteLine("podaj pozycję znaku 'x' w lini i");
 				string text3 = Console.ReadLine();
-				int position2i = int.Parse(text3);
+				int position2i;
+
+				bool isNumber3 = int.TryParse(text3, out position2i);
+
+				if (isNumber3 == false)
+				{
+					Console.WriteLine("podałeś literę zamiast liczby");
+					
+				}
+
+				if (position2i > array.Rank)
+				{
+					Console.WriteLine("podałeś za dużą liczbę");
+				}
+
 				Console.WriteLine("podaj pozycję znaku 'x' w lini j");
 				string text4 = Console.ReadLine();
-				int position2j = int.Parse(text4);
+				int position2j;
 
-				//if (position1i > 2)
-				//{
-				//	Console.WriteLine("zbyt wysoka współrzędna");
-				//}
+				bool isNumber4 = int.TryParse(text4, out position2j);
 
-				//if (position1j > 2)
-				//{
-				//	Console.WriteLine("zbyt wysoka współrzędna");
-				//}
+				if (isNumber4 == false)
+				{
+					Console.WriteLine("podałeś literę zamiast liczby");
+										
+				}
+
+				if (position2j > array.Rank)
+				{
+					Console.WriteLine("podałeś za dużą liczbę");
+				}
 
 				if (array[position2i, position2j] == "[ ]")
 				{
@@ -155,11 +165,7 @@ namespace CircleandCross2
 				{
 					Console.WriteLine("pozycja już zajęta");
 				}
-
 				
-
-
-
 				ShowGameBoard(array);
 
 				GameWonCondition(array);
@@ -170,12 +176,7 @@ namespace CircleandCross2
 					break;
 				}
 
-
-
-
 			}
-
-
 
 		}
 	}
