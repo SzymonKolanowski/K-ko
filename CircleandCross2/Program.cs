@@ -20,7 +20,7 @@ namespace CircleandCross2
 			
 		}
 
-		static bool GameWonCondition(string[,] board)
+		static bool ChechWinCondition(string[,] board)
 		{
 			for (int i = 0; i < 3; i++)
 			{
@@ -53,6 +53,57 @@ namespace CircleandCross2
 			return false;
 		}
 
+		static bool CheckWinCondition2(string[,] board, string playerfield, string playerfield2)
+		{
+			playerfield = "[o]" ;
+			playerfield2 = "[x]";
+			for (int i = 0; i < 3; i++)
+			{
+				for (int j = 0; j < 3; j++)
+				{
+					string arr = board[i, j];
+					if (board[i, 0] == playerfield ||board[i, 0] == playerfield2
+						|| board[i, 1] == playerfield || board[i, 1] == playerfield2
+						 || board[i, 2] == playerfield || board[i, 2] == playerfield2
+						 || (board[0, j] == playerfield || board[0,j ] == playerfield2
+						|| board[1,j] == playerfield || board[1,j] == playerfield2
+						 || board[2,j] == playerfield || board[2,j] == playerfield2))
+					{
+						return true;
+					}
+
+				}
+			}
+			return false;
+		}
+
+		//static bool IsCorrectInput(string text,string text2, string[,] board)
+		//{
+		//	int position1i;
+		//	int position1j;
+		//	bool isNumber = int.TryParse(text, out position1i);
+		//	bool isNumber2 = int.TryParse(text2, out position1j);
+
+		//	for (int i = 0; i < board.GetLength(0); i++)
+		//	{
+		//		for (int j = 0; j < board.GetLength(1); j++)
+		//		{
+		//			string arr = board[i, j];
+		//			Console.Write(arr);
+		//		}
+		//		Console.WriteLine();
+		//	}
+
+		//	while (isNumber == false || isNumber2 == false || position1i > )
+		//	{
+		//		return false;
+		//	}
+
+
+		//	return true;
+
+		//}
+
 		static void Main(string[] args)
 		{
 
@@ -61,43 +112,33 @@ namespace CircleandCross2
 
 			for (int GameRound = 1; GameRound <= 5; GameRound++)
 			{
-
+			Found:
 				Console.WriteLine("podaj pozycje 'o' w lini 'i'");
 				string text = Console.ReadLine();
 				int position1i ;
-
 				bool isNumber = int.TryParse(text, out  position1i);
-
-				if (isNumber == false )
+				bool comprasion = isNumber != true;
+				while (isNumber != true || position1i > array.Rank)
 				{
-					Console.WriteLine("podałeś literę zamiast liczby");
-					
-
+					Console.WriteLine("wprowadziłeś złą wartość");
+					Console.WriteLine("podaj pozycje 'o' w lini 'i'");
+					text = Console.ReadLine();
+					isNumber = int.TryParse(text, out position1i);
 				}
 
-				if (position1i > array.Rank)
-				{
-					Console.WriteLine("podałeś za dużą liczbę");
-				}
-				
 				Console.WriteLine(" podaj pozycję 'o' w lini 'j' ");
 				string text2 = Console.ReadLine();
 				int position1j ;
-
 				bool isNumber2 = int.TryParse(text2, out position1j);
-
-				if (isNumber2 == false)
+				bool comprasion2 = isNumber2 != true;
+				while ( isNumber2 != true || position1j > array.Rank )
 				{
-					Console.WriteLine("podałeś literę zamiast liczby");
-					
+					Console.WriteLine("wprowadziłeś złą wartość");
+					Console.WriteLine("podaj pozycje 'o' w lini 'j'");
+					text2 = Console.ReadLine();
+					isNumber2 = int.TryParse(text2, out position1j);
+				}
 				
-				}
-
-				if (position1j > array.Rank)
-				{
-					Console.WriteLine("podałeś za dużą liczbę");
-				}
-
 				if (array[position1i, position1j] == "[ ]")
 				{
 					array[position1i, position1j] = "[o]";
@@ -105,13 +146,14 @@ namespace CircleandCross2
 				else
 				{
 					Console.WriteLine("pozycja już zajęta");
+					goto Found;
 				}
-				
+
 				ShowGameBoard(array);
 
-				GameWonCondition(array);
+				ChechWinCondition(array);
 
-				if (GameWonCondition(array) == true)
+				if (ChechWinCondition(array) == true)
 				{
 					Console.WriteLine("'o' won");
 					break;
@@ -123,39 +165,36 @@ namespace CircleandCross2
 					break;
 				}
 
+			Found2:
 				Console.WriteLine("podaj pozycję znaku 'x' w lini i");
 				string text3 = Console.ReadLine();
 				int position2i;
 
 				bool isNumber3 = int.TryParse(text3, out position2i);
-
-				if (isNumber3 == false)
+				bool comprasion3 = isNumber3 != true;
+				while (isNumber3 != true || position2i > array.Rank)
 				{
-					Console.WriteLine("podałeś literę zamiast liczby");
-					
+					Console.WriteLine("wprowadziłeś złą wartość");
+					Console.WriteLine("podaj pozycje 'x' w lini 'i'");
+					text3 = Console.ReadLine();
+					isNumber3 = int.TryParse(text3, out position2i);
 				}
 
-				if (position2i > array.Rank)
-				{
-					Console.WriteLine("podałeś za dużą liczbę");
-				}
 
 				Console.WriteLine("podaj pozycję znaku 'x' w lini j");
 				string text4 = Console.ReadLine();
 				int position2j;
 
 				bool isNumber4 = int.TryParse(text4, out position2j);
-
-				if (isNumber4 == false)
+				bool comprasion4 = isNumber4 != true;
+				while (isNumber4 != true || position2j > array.Rank)
 				{
-					Console.WriteLine("podałeś literę zamiast liczby");
-										
+					Console.WriteLine("wprowadziłeś złą wartość");
+					Console.WriteLine("podaj pozycje 'x' w lini 'j'");
+					text4 = Console.ReadLine();
+					isNumber4 = int.TryParse(text4, out position2j);
 				}
 
-				if (position2j > array.Rank)
-				{
-					Console.WriteLine("podałeś za dużą liczbę");
-				}
 
 				if (array[position2i, position2j] == "[ ]")
 				{
@@ -164,13 +203,14 @@ namespace CircleandCross2
 				else
 				{
 					Console.WriteLine("pozycja już zajęta");
+					goto Found2;
 				}
 				
 				ShowGameBoard(array);
 
-				GameWonCondition(array);
+				ChechWinCondition(array);
 
-				if (GameWonCondition(array) == true)
+				if (ChechWinCondition(array) == true)
 				{
 					Console.WriteLine("'x' won");
 					break;
