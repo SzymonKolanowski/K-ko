@@ -53,26 +53,33 @@ namespace CircleandCross2
 			return false;
 		}
 
-		static bool CheckWinCondition2(string[,] board, string playerfield, string playerfield2)
+		static bool CheckWinCondition2(string[,] board /*string  playerfield*/)
 		{
-			playerfield = "[o]" ;
-			playerfield2 = "[x]";
-			for (int i = 0; i < 3; i++)
-			{
-				for (int j = 0; j < 3; j++)
-				{
-					string arr = board[i, j];
-					if (board[i, 0] == playerfield ||board[i, 0] == playerfield2
-						|| board[i, 1] == playerfield || board[i, 1] == playerfield2
-						 || board[i, 2] == playerfield || board[i, 2] == playerfield2
-						 || (board[0, j] == playerfield || board[0,j ] == playerfield2
-						|| board[1,j] == playerfield || board[1,j] == playerfield2
-						 || board[2,j] == playerfield || board[2,j] == playerfield2))
-					{
-						return true;
-					}
+			//for (int columns = 0; columns < 3; columns++)
+			//{
+			//	if (board[columns, 0] == "[o]" || board[columns, 1] == "[o]" || board[columns, 2] == "[o]"
+			//		|| board[columns, 0] == "[x]" || board[columns, 1] == "[x]" || board[columns, 2] == "[x]")
+			//	{
+			//		return true;
+			//	}
 
-				}
+			//}
+
+			////for (int rows = 0; rows < 3; rows++)
+			////{
+			////	if (board [0,rows] =="[o]" || board [1,rows] == "[o]" || board [2,rows] == "[o]"
+			////		|| board[0, rows] == "[x]" || board[1, rows] == "[x]" || board[2, rows] == "[x]")
+			////	{
+			////		return true;
+			////	}
+
+			////}
+			if (board[0, 0] == "[o]" && board[1, 1] == "[o]" && board[2, 2] == "[o]"
+				|| board[0, 0] == "[x]" && board[1, 1] == "[x]" && board[2, 2] == "[x]"
+				|| board[0, 2] == "[o]" && board[1, 1] == "[o]" && board[2, 0] == "[o]"
+				|| board[0, 2] == "[x]" && board[1, 1] == "[x]" && board[2, 0] == "[x]")
+			{
+				return true;
 			}
 			return false;
 		}
@@ -151,9 +158,9 @@ namespace CircleandCross2
 
 				ShowGameBoard(array);
 
-				ChechWinCondition(array);
+				CheckWinCondition2(array);
 
-				if (ChechWinCondition(array) == true)
+				if (CheckWinCondition2(array) == true)
 				{
 					Console.WriteLine("'o' won");
 					break;
@@ -208,9 +215,9 @@ namespace CircleandCross2
 				
 				ShowGameBoard(array);
 
-				ChechWinCondition(array);
+				CheckWinCondition2(array);
 
-				if (ChechWinCondition(array) == true)
+				if (CheckWinCondition2(array) == true)
 				{
 					Console.WriteLine("'x' won");
 					break;
