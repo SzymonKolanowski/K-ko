@@ -21,45 +21,41 @@ namespace CircleandCross2
 			
 		}
 		
-		static bool CheckWinCondition(string[,] board)
-		{
+		
+		static bool CheckWinCondition(string[,] board, string PlayerToken)
+					{
 			for (int columns = 0; columns < 3; columns++)
 			{
-				if (board[columns, 0] == "[o]" && board[columns, 1] == "[o]" && board[columns, 2] == "[o]"
-					|| board[columns, 0] == "[x]" && board[columns, 1] == "[x]" && board[columns, 2] == "[x]")
-					
+				if (board[columns, 0] == PlayerToken && board[columns, 1] == PlayerToken && board[columns, 2] == PlayerToken)
+										
 				{
 					return true;
 				}
-
 			}
 
 			for (int rows = 0; rows < 3; rows++)
 			{
-				if (board[0, rows] == "[o]" && board[1, rows] == "[o]" && board[2, rows] == "[o]"
-					|| board[0, rows] == "[x]" && board[1, rows] == "[x]" && board[2, rows] == "[x]")
+				if (board[0, rows] == PlayerToken && board[1, rows] == PlayerToken && board[2, rows] == PlayerToken)
 
 				{
 					return true;
 				}
 
 			}
-			if (board[0, 0] == "[o]" && board[1, 1] == "[o]" && board[2, 2] == "[o]"
-				|| board[0, 0] == "[x]" && board[1, 1] == "[x]" && board[2, 2] == "[x]"
-				|| board[0, 2] == "[o]" && board[1, 1] == "[o]" && board[2, 0] == "[o]"
-				|| board[0, 2] == "[x]" && board[1, 1] == "[x]" && board[2, 0] == "[x]")
+			if (board[0, 0] == PlayerToken && board[1, 1] == PlayerToken && board[2, 2] == PlayerToken				
+				|| board[0, 2] == PlayerToken && board[1, 1] == PlayerToken && board[2, 0] == PlayerToken)
 			{
 				return true;
 			}
 			return false;
 		}
 
-		//static bool IsCorrectInput(string text,string text2, string[,] board)
+		//static bool IsCorrectInput(string text,string[,]board)
 		//{
 		//	int position1i;
-		//	int position1j;
 		//	bool isNumber = int.TryParse(text, out position1i);
-		//	bool isNumber2 = int.TryParse(text2, out position1j);
+		//	bool comprasion = isNumber != true;
+			
 
 		//	for (int i = 0; i < board.GetLength(0); i++)
 		//	{
@@ -71,14 +67,11 @@ namespace CircleandCross2
 		//		Console.WriteLine();
 		//	}
 
-		//	while (isNumber == false || isNumber2 == false || position1i > )
+		//	while (isNumber != true || position1i > board.Rank )
 		//	{
 		//		return false;
 		//	}
-
-
 		//	return true;
-
 		//}
 
 		static void Main(string[] args)
@@ -93,7 +86,7 @@ namespace CircleandCross2
 				Console.WriteLine("podaj pozycje 'o' w lini 'i'");
 				string text = Console.ReadLine();
 				int position1i ;
-				bool isNumber = int.TryParse(text, out  position1i);
+				bool isNumber = int.TryParse(text, out position1i);
 				bool comprasion = isNumber != true;
 				while (isNumber != true || position1i > array.Rank)
 				{
@@ -103,19 +96,22 @@ namespace CircleandCross2
 					isNumber = int.TryParse(text, out position1i);
 				}
 
+
 				Console.WriteLine(" podaj pozycję 'o' w lini 'j' ");
 				string text2 = Console.ReadLine();
 				int position1j ;
 				bool isNumber2 = int.TryParse(text2, out position1j);
 				bool comprasion2 = isNumber2 != true;
-				while ( isNumber2 != true || position1j > array.Rank )
+				while (isNumber2 != true || position1j > array.Rank)
 				{
 					Console.WriteLine("wprowadziłeś złą wartość");
 					Console.WriteLine("podaj pozycje 'o' w lini 'j'");
 					text2 = Console.ReadLine();
 					isNumber2 = int.TryParse(text2, out position1j);
 				}
+
 				
+
 				if (array[position1i, position1j] == "[ ]")
 				{
 					array[position1i, position1j] = "[o]";
@@ -128,9 +124,9 @@ namespace CircleandCross2
 
 				ShowGameBoard(array);
 
-				CheckWinCondition(array);
+				CheckWinCondition(array,"[o]");
 
-				if (CheckWinCondition(array) == true)
+				if (CheckWinCondition(array,"[o]") == true)
 				{
 					Console.WriteLine("'o' won");
 					break;
@@ -185,9 +181,9 @@ namespace CircleandCross2
 				
 				ShowGameBoard(array);
 
-				CheckWinCondition(array);
+				CheckWinCondition(array,"[x]");
 
-				if (CheckWinCondition(array) == true)
+				if (CheckWinCondition(array,"[x]") == true)
 				{
 					Console.WriteLine("'x' won");
 					break;
