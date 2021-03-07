@@ -50,29 +50,46 @@ namespace CircleandCross2
 			return false;
 		}
 
-		//static bool IsCorrectInput(string text,string[,]board)
-		//{
-		//	int position1i;
-		//	bool isNumber = int.TryParse(text, out position1i);
-		//	bool comprasion = isNumber != true;
-			
+		static Position ReturnPosition(string [,]  array)
+		{
 
-		//	for (int i = 0; i < board.GetLength(0); i++)
-		//	{
-		//		for (int j = 0; j < board.GetLength(1); j++)
-		//		{
-		//			string arr = board[i, j];
-		//			Console.Write(arr);
-		//		}
-		//		Console.WriteLine();
-		//	}
+		Found:
+			Console.WriteLine("podaj pozycje 'o' w lini 'i'");
+			string text = Console.ReadLine();
+			int position1i;
+			bool isNumber = int.TryParse(text, out position1i);
+			while (isNumber != true || position1i > array.Rank)
+			{
+				Console.WriteLine("wprowadziłeś złą wartość");
+				Console.WriteLine("podaj pozycje 'o' w lini 'i'");
+				text = Console.ReadLine();
+				isNumber = int.TryParse(text, out position1i);
+			}
 
-		//	while (isNumber != true || position1i > board.Rank )
-		//	{
-		//		return false;
-		//	}
-		//	return true;
-		//}
+			Console.WriteLine(" podaj pozycję 'o' w lini 'j' ");
+			string text2 = Console.ReadLine();
+			int position1j;
+			bool isNumber2 = int.TryParse(text2, out position1j);
+			while (isNumber2 != true || position1j > array.Rank)
+			{
+				Console.WriteLine("wprowadziłeś złą wartość");
+				Console.WriteLine("podaj pozycje 'o' w lini 'j'");
+				text2 = Console.ReadLine();
+				isNumber2 = int.TryParse(text2, out position1j);
+			}
+
+
+
+			if (array[position1i, position1j] != "[ ]")
+			{
+				Console.WriteLine("pozycja już zajęta");
+				goto Found;
+			}
+			// metoda ma zwrócić pozycje.
+		}
+		
+		
+				
 
 		static void Main(string[] args)
 		{
@@ -87,7 +104,6 @@ namespace CircleandCross2
 				string text = Console.ReadLine();
 				int position1i ;
 				bool isNumber = int.TryParse(text, out position1i);
-				bool comprasion = isNumber != true;
 				while (isNumber != true || position1i > array.Rank)
 				{
 					Console.WriteLine("wprowadziłeś złą wartość");
@@ -101,7 +117,6 @@ namespace CircleandCross2
 				string text2 = Console.ReadLine();
 				int position1j ;
 				bool isNumber2 = int.TryParse(text2, out position1j);
-				bool comprasion2 = isNumber2 != true;
 				while (isNumber2 != true || position1j > array.Rank)
 				{
 					Console.WriteLine("wprowadziłeś złą wartość");
