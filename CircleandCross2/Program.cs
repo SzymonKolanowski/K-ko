@@ -78,14 +78,17 @@ namespace CircleandCross2
 				isNumber2 = int.TryParse(text2, out position1j);
 			}
 
-
-
 			if (array[position1i, position1j] != "[ ]")
 			{
 				Console.WriteLine("pozycja już zajęta");
 				goto Found;
 			}
 			// metoda ma zwrócić pozycje.
+			var position1 = new Position();
+			position1.positioni();
+			var position2 = new Position();
+			position2.positionj();
+			return array[position1, position2];
 		}
 		
 		
