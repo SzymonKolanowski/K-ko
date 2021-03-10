@@ -84,16 +84,10 @@ namespace CircleandCross2
 				goto Found;
 			}
 			// metoda ma zwrócić pozycje.
-			var position1 = new Position();
-			position1.positioni();
-			var position2 = new Position();
-			position2.positionj();
-			return array[position1, position2];
+			//var positionrow = new Positionrow();
+			
 		}
 		
-		
-				
-
 		static void Main(string[] args)
 		{
 

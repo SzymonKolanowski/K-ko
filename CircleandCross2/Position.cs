@@ -6,18 +6,20 @@ namespace CircleandCross2
 {
 	public class Position
 	{
-		public int positioni()
+	
+		public int Positionrow;
+		public int Positioncolumn;
+
+		public Position(int positionrow, int positioncolumn)
 		{
-			string text = Console.ReadLine();
-			int positioni = int.Parse(text);
-			return positioni;
+			Positionrow = positionrow;
+			Positioncolumn = positioncolumn;
 		}
 
-		public int positionj()
+		public Position(string text,string text2)
 		{
-			string text2 = Console.ReadLine();
-			int positionj = int.Parse(text2);
-			return positionj;
+			Positioncolumn = int.Parse(text);
+			Positionrow = int.Parse(text2);
 		}
 
 	}
