@@ -6,7 +6,7 @@ namespace CircleandCross2
 {
 	public class Position
 	{
-	
+
 		public int Positionrow;
 		public int Positioncolumn;
 
@@ -16,11 +16,10 @@ namespace CircleandCross2
 			Positioncolumn = positioncolumn;
 		}
 
-		public Position(string text,string text2)
+		public Position(string text, string text2)
 		{
 			Positioncolumn = int.Parse(text);
 			Positionrow = int.Parse(text2);
 		}
-
-	}
+	}	
 }

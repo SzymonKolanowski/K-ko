@@ -20,8 +20,6 @@ namespace CircleandCross2
 			}
 			
 		}
-		
-		
 		static bool CheckWinCondition(string[,] board, string PlayerToken)
 					{
 			for (int columns = 0; columns < 3; columns++)
@@ -50,7 +48,7 @@ namespace CircleandCross2
 			return false;
 		}
 
-		static Position ReturnPosition(string [,]  array)
+		static Position ReturnPosition(string[,] array)
 		{
 
 		Found:
@@ -84,8 +82,9 @@ namespace CircleandCross2
 				goto Found;
 			}
 			// metoda ma zwrócić pozycje.
-			//var positionrow = new Positionrow();
 			
+			Position p1 = new Position(position1i,position1j);
+			return p1;
 		}
 		
 		static void Main(string[] args)
@@ -99,7 +98,7 @@ namespace CircleandCross2
 			Found:
 				Console.WriteLine("podaj pozycje 'o' w lini 'i'");
 				string text = Console.ReadLine();
-				int position1i ;
+				int position1i;
 				bool isNumber = int.TryParse(text, out position1i);
 				while (isNumber != true || position1i > array.Rank)
 				{
@@ -112,7 +111,7 @@ namespace CircleandCross2
 
 				Console.WriteLine(" podaj pozycję 'o' w lini 'j' ");
 				string text2 = Console.ReadLine();
-				int position1j ;
+				int position1j;
 				bool isNumber2 = int.TryParse(text2, out position1j);
 				while (isNumber2 != true || position1j > array.Rank)
 				{
@@ -121,8 +120,6 @@ namespace CircleandCross2
 					text2 = Console.ReadLine();
 					isNumber2 = int.TryParse(text2, out position1j);
 				}
-
-				
 
 				if (array[position1i, position1j] == "[ ]")
 				{
@@ -133,6 +130,8 @@ namespace CircleandCross2
 					Console.WriteLine("pozycja już zajęta");
 					goto Found;
 				}
+
+				//ReturnPosition(array);
 
 				ShowGameBoard(array);
 
@@ -165,7 +164,6 @@ namespace CircleandCross2
 					isNumber3 = int.TryParse(text3, out position2i);
 				}
 
-
 				Console.WriteLine("podaj pozycję znaku 'x' w lini j");
 				string text4 = Console.ReadLine();
 				int position2j;
@@ -180,7 +178,6 @@ namespace CircleandCross2
 					isNumber4 = int.TryParse(text4, out position2j);
 				}
 
-
 				if (array[position2i, position2j] == "[ ]")
 				{
 					array[position2i, position2j] = "[x]";
@@ -190,6 +187,7 @@ namespace CircleandCross2
 					Console.WriteLine("pozycja już zajęta");
 					goto Found2;
 				}
+				
 				
 				ShowGameBoard(array);
 
