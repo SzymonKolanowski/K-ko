@@ -82,9 +82,10 @@ namespace CircleandCross2
 				goto Found;
 			}
 			// metoda ma zwrócić pozycje.
-			
-			Position p1 = new Position(position1i,position1j);
-			return p1;
+
+			var position = ReturnPosition(array);
+			array[position1i, position1j] = "[o]"; ;
+			return position;
 		}
 		
 		static void Main(string[] args)
@@ -95,43 +96,43 @@ namespace CircleandCross2
 
 			for (int GameRound = 1; GameRound <= 5; GameRound++)
 			{
-			Found:
-				Console.WriteLine("podaj pozycje 'o' w lini 'i'");
-				string text = Console.ReadLine();
-				int position1i;
-				bool isNumber = int.TryParse(text, out position1i);
-				while (isNumber != true || position1i > array.Rank)
-				{
-					Console.WriteLine("wprowadziłeś złą wartość");
-					Console.WriteLine("podaj pozycje 'o' w lini 'i'");
-					text = Console.ReadLine();
-					isNumber = int.TryParse(text, out position1i);
-				}
+			//Found:
+			//	Console.WriteLine("podaj pozycje 'o' w lini 'i'");
+			//	string text = Console.ReadLine();
+			//	int position1i;
+			//	bool isNumber = int.TryParse(text, out position1i);
+			//	while (isNumber != true || position1i > array.Rank)
+			//	{
+			//		Console.WriteLine("wprowadziłeś złą wartość");
+			//		Console.WriteLine("podaj pozycje 'o' w lini 'i'");
+			//		text = Console.ReadLine();
+			//		isNumber = int.TryParse(text, out position1i);
+			//	}
 
 
-				Console.WriteLine(" podaj pozycję 'o' w lini 'j' ");
-				string text2 = Console.ReadLine();
-				int position1j;
-				bool isNumber2 = int.TryParse(text2, out position1j);
-				while (isNumber2 != true || position1j > array.Rank)
-				{
-					Console.WriteLine("wprowadziłeś złą wartość");
-					Console.WriteLine("podaj pozycje 'o' w lini 'j'");
-					text2 = Console.ReadLine();
-					isNumber2 = int.TryParse(text2, out position1j);
-				}
+			//	Console.WriteLine(" podaj pozycję 'o' w lini 'j' ");
+			//	string text2 = Console.ReadLine();
+			//	int position1j;
+			//	bool isNumber2 = int.TryParse(text2, out position1j);
+			//	while (isNumber2 != true || position1j > array.Rank)
+			//	{
+			//		Console.WriteLine("wprowadziłeś złą wartość");
+			//		Console.WriteLine("podaj pozycje 'o' w lini 'j'");
+			//		text2 = Console.ReadLine();
+			//		isNumber2 = int.TryParse(text2, out position1j);
+			//	}
 
-				if (array[position1i, position1j] == "[ ]")
-				{
-					array[position1i, position1j] = "[o]";
-				}
-				else
-				{
-					Console.WriteLine("pozycja już zajęta");
-					goto Found;
-				}
+			//	if (array[position1i, position1j] == "[ ]")
+			//	{
+			//		array[position1i, position1j] = "[o]";
+			//	}
+			//	else
+			//	{
+			//		Console.WriteLine("pozycja już zajęta");
+			//		goto Found;
+			//	}
 
-				//ReturnPosition(array);
+				ReturnPosition(array);
 
 				ShowGameBoard(array);
 
