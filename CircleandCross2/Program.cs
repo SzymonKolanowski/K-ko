@@ -48,30 +48,30 @@ namespace CircleandCross2
 			return false;
 		}
 
-		static Position ReturnPosition(string[,] array)
+		static Position ReturnPosition(string[,] array,string PlayerToken)
 		{
 
 		Found:
-			Console.WriteLine("podaj pozycje 'o' w lini 'i'");
+			Console.WriteLine("podaj pozycje" + PlayerToken + " w lini i");
 			string text = Console.ReadLine();
 			int position1i;
 			bool isNumber = int.TryParse(text, out position1i);
 			while (isNumber != true || position1i > array.Rank)
 			{
 				Console.WriteLine("wprowadziłeś złą wartość");
-				Console.WriteLine("podaj pozycje 'o' w lini 'i'");
+				Console.WriteLine("podaj pozycje " + PlayerToken + " w lini 'i'");
 				text = Console.ReadLine();
 				isNumber = int.TryParse(text, out position1i);
 			}
-
-			Console.WriteLine(" podaj pozycję 'o' w lini 'j' ");
+			// sprawić by nie było dupikacji kodu na lini 'i' i na lini 'j' utwórz funkcję
+			Console.WriteLine(" podaj pozycję " + PlayerToken + " w lini 'j' ");
 			string text2 = Console.ReadLine();
 			int position1j;
 			bool isNumber2 = int.TryParse(text2, out position1j);
 			while (isNumber2 != true || position1j > array.Rank)
 			{
 				Console.WriteLine("wprowadziłeś złą wartość");
-				Console.WriteLine("podaj pozycje 'o' w lini 'j'");
+				Console.WriteLine("podaj pozycje " + PlayerToken + " w lini 'j'");
 				text2 = Console.ReadLine();
 				isNumber2 = int.TryParse(text2, out position1j);
 			}
@@ -79,15 +79,13 @@ namespace CircleandCross2
 			if (array[position1i, position1j] != "[ ]")
 			{
 				Console.WriteLine("pozycja już zajęta");
-				goto Found;
+				goto Found;// zamienić goto na  pętle while
 			}
-			// metoda ma zwrócić pozycje.
-
-			var position = ReturnPosition(array);
-			array[position1i, position1j] = "[o]"; ;
-			return position;
+			
+			Position p1 = new Position(position1i, position1j);
+			return p1;
+			
 		}
-		
 		static void Main(string[] args)
 		{
 
@@ -96,49 +94,15 @@ namespace CircleandCross2
 
 			for (int GameRound = 1; GameRound <= 5; GameRound++)
 			{
-			//Found:
-			//	Console.WriteLine("podaj pozycje 'o' w lini 'i'");
-			//	string text = Console.ReadLine();
-			//	int position1i;
-			//	bool isNumber = int.TryParse(text, out position1i);
-			//	while (isNumber != true || position1i > array.Rank)
-			//	{
-			//		Console.WriteLine("wprowadziłeś złą wartość");
-			//		Console.WriteLine("podaj pozycje 'o' w lini 'i'");
-			//		text = Console.ReadLine();
-			//		isNumber = int.TryParse(text, out position1i);
-			//	}
-
-
-			//	Console.WriteLine(" podaj pozycję 'o' w lini 'j' ");
-			//	string text2 = Console.ReadLine();
-			//	int position1j;
-			//	bool isNumber2 = int.TryParse(text2, out position1j);
-			//	while (isNumber2 != true || position1j > array.Rank)
-			//	{
-			//		Console.WriteLine("wprowadziłeś złą wartość");
-			//		Console.WriteLine("podaj pozycje 'o' w lini 'j'");
-			//		text2 = Console.ReadLine();
-			//		isNumber2 = int.TryParse(text2, out position1j);
-			//	}
-
-			//	if (array[position1i, position1j] == "[ ]")
-			//	{
-			//		array[position1i, position1j] = "[o]";
-			//	}
-			//	else
-			//	{
-			//		Console.WriteLine("pozycja już zajęta");
-			//		goto Found;
-			//	}
-
-				ReturnPosition(array);
+			
+				var position = ReturnPosition(array,"[o]");
+				array[ position.Positionrow , position.Positioncolumn] = "[o]";
 
 				ShowGameBoard(array);
 
-				CheckWinCondition(array,"[o]");
+				
 
-				if (CheckWinCondition(array,"[o]") == true)
+				if (CheckWinCondition(array,"[o]") )
 				{
 					Console.WriteLine("'o' won");
 					break;
@@ -149,52 +113,14 @@ namespace CircleandCross2
 					Console.WriteLine(" koniec gry - remis");
 					break;
 				}
+								
+				var position2 = ReturnPosition(array,"[x]");
+				array[ position2.Positionrow, position2.Positioncolumn] = "[x]";
 
-			Found2:
-				Console.WriteLine("podaj pozycję znaku 'x' w lini i");
-				string text3 = Console.ReadLine();
-				int position2i;
-
-				bool isNumber3 = int.TryParse(text3, out position2i);
-				bool comprasion3 = isNumber3 != true;
-				while (isNumber3 != true || position2i > array.Rank)
-				{
-					Console.WriteLine("wprowadziłeś złą wartość");
-					Console.WriteLine("podaj pozycje 'x' w lini 'i'");
-					text3 = Console.ReadLine();
-					isNumber3 = int.TryParse(text3, out position2i);
-				}
-
-				Console.WriteLine("podaj pozycję znaku 'x' w lini j");
-				string text4 = Console.ReadLine();
-				int position2j;
-
-				bool isNumber4 = int.TryParse(text4, out position2j);
-				bool comprasion4 = isNumber4 != true;
-				while (isNumber4 != true || position2j > array.Rank)
-				{
-					Console.WriteLine("wprowadziłeś złą wartość");
-					Console.WriteLine("podaj pozycje 'x' w lini 'j'");
-					text4 = Console.ReadLine();
-					isNumber4 = int.TryParse(text4, out position2j);
-				}
-
-				if (array[position2i, position2j] == "[ ]")
-				{
-					array[position2i, position2j] = "[x]";
-				}
-				else
-				{
-					Console.WriteLine("pozycja już zajęta");
-					goto Found2;
-				}
-				
-				
 				ShowGameBoard(array);
-
-				CheckWinCondition(array,"[x]");
-
-				if (CheckWinCondition(array,"[x]") == true)
+						
+				
+				if (CheckWinCondition(array,"[x]"))
 				{
 					Console.WriteLine("'x' won");
 					break;
