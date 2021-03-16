@@ -48,10 +48,28 @@ namespace CircleandCross2
 			return false;
 		}
 
+		static Coordinates ReturnCordinates(string[] array, string PlayerCoordinates)
+		{
+			Console.WriteLine("podaj pozycję " + PlayerCoordinates + " współrzędnej");
+			string text = Console.ReadLine();
+			int cordinate;
+			bool isCordinates = int.TryParse(text, out cordinate);
+			while( isCordinates != true|| cordinate > array.Rank)
+			{
+				Console.WriteLine("wprowadziłeś złą wartość");
+				Console.WriteLine("podaj poprawną wartość " + PlayerCoordinates);
+				text = Console.ReadLine();
+				isCordinates = int.TryParse(text, out cordinate);
+			}
+			Coordinates c1 = new Coordinates(cordinate);
+			return c1;
+		}
 		static Position ReturnPosition(string[,] array,string PlayerToken)
 		{
 
 		Found:
+			var coordinates = ReturnCordinates(array, PlayerCoordinates);
+			
 			Console.WriteLine("podaj pozycje" + PlayerToken + " w lini i");
 			string text = Console.ReadLine();
 			int position1i;
