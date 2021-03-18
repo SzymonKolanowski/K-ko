@@ -67,9 +67,9 @@ namespace CircleandCross2
 		static Position ReturnPosition(string[,] array,string PlayerToken)
 		{
 
-		Found:
-			var coordinates = ReturnCordinates(array, PlayerCoordinates);
-			
+		//Found:
+
+
 			Console.WriteLine("podaj pozycje" + PlayerToken + " w lini i");
 			string text = Console.ReadLine();
 			int position1i;
@@ -94,12 +94,12 @@ namespace CircleandCross2
 				isNumber2 = int.TryParse(text2, out position1j);
 			}
 
-			if (array[position1i, position1j] != "[ ]")
+			while (array[position1i, position1j] != "[ ]")
 			{
-				Console.WriteLine("pozycja już zajęta");
-				goto Found;// zamienić goto na  pętle while
+				
+				//goto Found;// zamienić goto na  pętle while
 			}
-			
+
 			Position p1 = new Position(position1i, position1j);
 			return p1;
 			
@@ -133,7 +133,7 @@ namespace CircleandCross2
 				}
 								
 				var position2 = ReturnPosition(array,"[x]");
-				array[ position2.Positionrow, position2.Positioncolumn] = "[x]";
+				array[ position2.Positionrow,position2.Positioncolumn] = "[x]";
 
 				ShowGameBoard(array);
 						
