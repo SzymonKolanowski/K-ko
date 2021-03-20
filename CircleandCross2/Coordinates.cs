@@ -6,12 +6,12 @@ namespace CircleandCross2
 {
 	public class Coordinates
 	{
-		public int PlayerCordinates;
+		public int PlayerCordinate;
 		
 
 		public Coordinates(int playercordinate )
 			{
-			PlayerCordinates = playercordinate;
+			PlayerCordinate = playercordinate;
 			
 			}
 	}

@@ -48,78 +48,83 @@ namespace CircleandCross2
 			return false;
 		}
 
-		static Coordinates ReturnCordinates(string[] array, string PlayerCoordinates)
+		static Coordinates ReturnCordinate(string[] array, string PlayerCoordinate)
 		{
-			Console.WriteLine("podaj pozycję " + PlayerCoordinates + " współrzędnej");
+			Console.WriteLine("podaj pozycję " + PlayerCoordinate + " współrzędnej");
 			string text = Console.ReadLine();
 			int cordinate;
 			bool isCordinates = int.TryParse(text, out cordinate);
 			while( isCordinates != true|| cordinate > array.Rank)
 			{
 				Console.WriteLine("wprowadziłeś złą wartość");
-				Console.WriteLine("podaj poprawną wartość " + PlayerCoordinates);
+				Console.WriteLine("podaj poprawną wartość " + PlayerCoordinate);
 				text = Console.ReadLine();
 				isCordinates = int.TryParse(text, out cordinate);
 			}
 			Coordinates c1 = new Coordinates(cordinate);
 			return c1;
 		}
-		static Position ReturnPosition(string[,] array,string PlayerToken)
+		static Position ReturnPosition(string[] array,string PlayerToken)
 		{
+
+			var cordinate = ReturnCordinate(array, PlayerToken);
+			array[cordinate.PlayerCordinate] = PlayerToken;
+
+			var cordinate2 = ReturnCordinate(array, PlayerToken);
+			array[cordinate2.PlayerCordinate] = PlayerToken;
+			
 
 		//Found:
 
 
-			Console.WriteLine("podaj pozycje" + PlayerToken + " w lini i");
-			string text = Console.ReadLine();
-			int position1i;
-			bool isNumber = int.TryParse(text, out position1i);
-			while (isNumber != true || position1i > array.Rank)
-			{
-				Console.WriteLine("wprowadziłeś złą wartość");
-				Console.WriteLine("podaj pozycje " + PlayerToken + " w lini 'i'");
-				text = Console.ReadLine();
-				isNumber = int.TryParse(text, out position1i);
-			}
-			// sprawić by nie było dupikacji kodu na lini 'i' i na lini 'j' utwórz funkcję
-			Console.WriteLine(" podaj pozycję " + PlayerToken + " w lini 'j' ");
-			string text2 = Console.ReadLine();
-			int position1j;
-			bool isNumber2 = int.TryParse(text2, out position1j);
-			while (isNumber2 != true || position1j > array.Rank)
-			{
-				Console.WriteLine("wprowadziłeś złą wartość");
-				Console.WriteLine("podaj pozycje " + PlayerToken + " w lini 'j'");
-				text2 = Console.ReadLine();
-				isNumber2 = int.TryParse(text2, out position1j);
-			}
+		//	Console.WriteLine("podaj pozycje" + PlayerToken + " w lini i");
+		//	string text = Console.ReadLine();
+		//	int position1i;
+		//	bool isNumber = int.TryParse(text, out position1i);
+		//	while (isNumber != true || position1i > array.Rank)
+		//	{
+		//		Console.WriteLine("wprowadziłeś złą wartość");
+		//		Console.WriteLine("podaj pozycje " + PlayerToken + " w lini 'i'");
+		//		text = Console.ReadLine();
+		//		isNumber = int.TryParse(text, out position1i);
+		//	}
+		//	// sprawić by nie było dupikacji kodu na lini 'i' i na lini 'j' utwórz funkcję
+		//	Console.WriteLine(" podaj pozycję " + PlayerToken + " w lini 'j' ");
+		//	string text2 = Console.ReadLine();
+		//	int position1j;
+		//	bool isNumber2 = int.TryParse(text2, out position1j);
+		//	while (isNumber2 != true || position1j > array.Rank)
+		//	{
+		//		Console.WriteLine("wprowadziłeś złą wartość");
+		//		Console.WriteLine("podaj pozycje " + PlayerToken + " w lini 'j'");
+		//		text2 = Console.ReadLine();
+		//		isNumber2 = int.TryParse(text2, out position1j);
+		//	}
 
-			while (array[position1i, position1j] != "[ ]")
-			{
-				
-				//goto Found;// zamienić goto na  pętle while
-			}
+		//	if (array[position1i, position1j] != "[ ]")
+		//	{
+		//		Console.WriteLine("pozycja już zajęta");
+		//		goto Found;// zamienić goto na  pętle while
+		//	}
 
-			Position p1 = new Position(position1i, position1j);
+			Position p1 = new Position(cordinate.PlayerCordinate);
 			return p1;
 			
 		}
 		static void Main(string[] args)
 		{
 
-			string [,] array = new string[3, 3] { { "[ ]", "[ ]", "[ ]" }, { "[ ]", "[ ]", "[ ]" }, { "[ ]", "[ ]", "[ ]" } };
+			string [,] array = new string[3,3] { { "[ ]", "[ ]", "[ ]" }, { "[ ]", "[ ]", "[ ]" }, { "[ ]", "[ ]", "[ ]" } };
 			ShowGameBoard(array);
 
 			for (int GameRound = 1; GameRound <= 5; GameRound++)
 			{
 			
 				var position = ReturnPosition(array,"[o]");
-				array[ position.Positionrow , position.Positioncolumn] = "[o]";
+				array[ position.PositionPlayer,position.PositionPlayer] = "[o]";
 
 				ShowGameBoard(array);
-
 				
-
 				if (CheckWinCondition(array,"[o]") )
 				{
 					Console.WriteLine("'o' won");
@@ -133,7 +138,7 @@ namespace CircleandCross2
 				}
 								
 				var position2 = ReturnPosition(array,"[x]");
-				array[ position2.Positionrow,position2.Positioncolumn] = "[x]";
+				array[ position2.PositionPlayer,position2.PositionPlayer] = "[x]";
 
 				ShowGameBoard(array);
 						
