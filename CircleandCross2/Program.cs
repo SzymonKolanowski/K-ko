@@ -89,40 +89,25 @@ namespace CircleandCross2
 
 			string[,] array = new string[3, 3] { { "[ ]", "[ ]", "[ ]" }, { "[ ]", "[ ]", "[ ]" }, { "[ ]", "[ ]", "[ ]" } };
 			ShowGameBoard(array);
-
-			for (int GameRound = 1; GameRound <= 5; GameRound++)
+			bool HasAnyoneWon = false; 
+			for (int GameRound = 1; GameRound <= array.Length; GameRound++)
 			{
-
-				var position = ReturnPosition(array, "[o]");
-				array[position.PositionRow, position.Positioncolumn] = "[o]";
-
-				ShowGameBoard(array);
-
-				if (CheckWinCondition(array, "[o]"))
-				{
-					Console.WriteLine("'o' won");
-					break;
-				}
-
-				if (GameRound == 5)
-				{
-					Console.WriteLine(" koniec gry - remis");
-					break;
-				}
-
-				var position2 = ReturnPosition(array, "[x]");
-				array[position2.PositionRow, position2.Positioncolumn] = "[x]";
+				var PlayerToken = GameRound % 2 == 0 ? "[x]" : "[o]";
+				var position = ReturnPosition(array, PlayerToken);
+				array[position.PositionRow, position.Positioncolumn] = PlayerToken;
 
 				ShowGameBoard(array);
-
-				if (CheckWinCondition(array, "[x]"))
+				HasAnyoneWon = CheckWinCondition(array, PlayerToken);
+				if(HasAnyoneWon) 
 				{
-					Console.WriteLine("'x' won");
+					Console.WriteLine(PlayerToken + " won");
 					break;
 				}
-
 			}
-
+			if (!HasAnyoneWon)
+			{
+				Console.WriteLine("remis");
+			}
 		}
 	}
 }
