@@ -7,13 +7,13 @@ namespace CircleandCross2
 	public class Position
 	{
 
-		public int PositionPlayer;
-		//public int Positioncolumn;
+		public int PositionRow;
+		public int Positioncolumn;
 
-		public Position(int positionplayer)
+		public Position(int positionrow,int positioncolumn)
 		{
-			PositionPlayer = positionplayer;
-			//Positioncolumn = positioncolumn;
+			PositionRow = positionrow;
+			Positioncolumn = positioncolumn;
 		}
 
 		
