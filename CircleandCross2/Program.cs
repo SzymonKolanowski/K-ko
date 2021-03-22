@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.IO;
 
 namespace CircleandCross2
 {
@@ -69,7 +70,6 @@ namespace CircleandCross2
 
 			var cordinate = ReturnCordinate(array.GetLength(0), PlayerToken);
 
-
 			var cordinate2 = ReturnCordinate(array.GetLength(1), PlayerToken);
 
 			while (array[cordinate.PlayerCordinate, cordinate2.PlayerCordinate] != "[ ]")
@@ -77,7 +77,6 @@ namespace CircleandCross2
 				Console.WriteLine("Pozycja została już wcześniej zajeta");
 				cordinate = ReturnCordinate(array.GetLength(0), PlayerToken);
 				cordinate2 = ReturnCordinate(array.GetLength(1), PlayerToken);
-
 			}
 
 			Position p1 = new Position(cordinate.PlayerCordinate, cordinate2.PlayerCordinate);
@@ -87,9 +86,11 @@ namespace CircleandCross2
 		static void Main(string[] args)
 		{
 
+			//FileStream fs = new FileStream("text.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+
 			string[,] array = new string[3, 3] { { "[ ]", "[ ]", "[ ]" }, { "[ ]", "[ ]", "[ ]" }, { "[ ]", "[ ]", "[ ]" } };
 			ShowGameBoard(array);
-			bool HasAnyoneWon = false; 
+			bool HasAnyoneWon = false;
 			for (int GameRound = 1; GameRound <= array.Length; GameRound++)
 			{
 				var PlayerToken = GameRound % 2 == 0 ? "[x]" : "[o]";
@@ -98,16 +99,24 @@ namespace CircleandCross2
 
 				ShowGameBoard(array);
 				HasAnyoneWon = CheckWinCondition(array, PlayerToken);
-				if(HasAnyoneWon) 
+				if (HasAnyoneWon)
 				{
 					Console.WriteLine(PlayerToken + " won");
 					break;
 				}
+				//fs.WriteByte((byte)GameRound);
 			}
 			if (!HasAnyoneWon)
 			{
 				Console.WriteLine("remis");
 			}
+			//fs.Position = 1;
+			//for (int GameRound = 1; GameRound <= array.Length; GameRound++)
+			//{
+			//	Console.Write(fs.ReadByte() + " ");
+			//}
+			//fs.Close();
+			//Console.ReadKey();
 		}
 	}
 }
